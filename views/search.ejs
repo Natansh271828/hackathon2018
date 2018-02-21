@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Makaan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="header.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="search.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="navbar.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="form.css"/>
+    
+    <!-- <script src="jquery-3.3.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="search.js"></script>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    
+ <script>   
+
+    function moveTo(a,e){
+        var win = window.open("https://www.makaan.com/" + a, '_blank');
+        win.focus();
+     
+    }
+
+</script>
+</head>
+<body>
+    <% include partials/header %>
+    <% include partials/navbar %>
+    <div class="form-wrapper">
+    <% include partials/login-form %>
+    <% include partials/signup-form %>
+    <% include partials/make-group-form %>
+    </div>
+    
+    
+
+
+    
+
+    <div class="result-container">
+        <span><strong><%= pages %></strong>&nbspresults&nbspin<strong id="city"></strong></span>
+
+        <%- html %> 
+        <div class="pagination"></div>
+    </div>
+
+  
+    
+<script>
+        var sort = '<%= sort %>';
+        var beds = '<%= beds %>';
+        var city_key = <%= city %>;
+        var rental = <%= rental %>;  
+        var totalResults = <%= pages %>;
+        var currentPage = <%= pageNumber %>;
+        var pages = Math.floor(totalResults/20);
+        console.log(pages);     
+
+
+        if(totalResults === 0){
+            document.getElementsByClassName("pagination")[0].style.display = "none";
+        }
+
+        Object.keys(city).forEach(function (key) {
+         if(city[key] === city_key){
+             document.getElementById("city").innerHTML = " " + key;
+         }
+        });
+
+
+
+        var paginationDiv = document.getElementsByClassName("pagination")[0];
+        //alert(typeof rental);
+        if(rental){
+            let x = document.getElementsByClassName('rent');
+            for(let i = 0; i < x.length; i++){
+                x[i].style.color = "#ff0000";
+            }
+
+        //document.getElementById('rent').style.color =  "#ff0000";
+        }
+        
+        else{
+            let x = document.getElementsByClassName('buy');
+            for(let i = 0; i < x.length; i++){
+                x[i].style.color = "#ff0000";
+            }
+
+        //document.getElementById('rent').style.color =  "#ff0000";
+        }
+        // document.getElementsByClassName('buy').forEach(element => {
+        //     element.style.color =  "#ff0000";
+        // });
+       // document.getElementById('buy').style.color = "#ff0000";
+        if(currentPage > 1){
+
+            let a = document.createElement("a");
+            a.href = `javascript:URL_add_parameter("page", ${currentPage  - 1})`;
+            a.innerHTML = "<";
+            paginationDiv.appendChild(a);
+
+        }
+        if(currentPage >= 3){
+        for(let i = currentPage - 2; i <= currentPage; i++){
+           
+                let a = document.createElement("a");
+                a.href = `javascript:URL_add_parameter("page", ${i})`;
+                a.innerHTML = i;
+                if(i === currentPage){
+                    a.style.color = "#ff0011af";
+                }
+            
+            paginationDiv.appendChild(a);
+        }
+     }
+     else{
+        for(let i = 1; i <= currentPage; i++){
+           
+           let a = document.createElement("a");
+           a.href = `javascript:URL_add_parameter("page", ${i})`;
+           a.innerHTML = i;
+           if(i === currentPage){
+               a.style.color = "#ff0011af";
+           }
+       
+       paginationDiv.appendChild(a);
+   }
+
+     }
+
+        if(currentPage <= pages - 4){
+        for(let i = currentPage + 1; i < currentPage + 4; i++){
+            let a = document.createElement("a");
+            a.href = `javascript:URL_add_parameter("page", ${i})`;
+            a.innerHTML = i;
+            paginationDiv.appendChild(a);
+        }
+    }
+
+        if(currentPage != pages){
+            let span = document.createElement("span");
+            span.innerHTML = "...";
+            paginationDiv.appendChild(span);
+            let a = document.createElement("a");
+            a.href = `javascript:URL_add_parameter("page", ${pages})`;
+            a.innerHTML = pages;
+            paginationDiv.appendChild(a);
+            let b = document.createElement("a");
+            b.href = `javascript:URL_add_parameter("page", ${currentPage  + 1})`;
+            b.innerHTML = ">";
+            paginationDiv.appendChild(b);
+        }  
+        
+
+       if(beds !== 'undefined'){
+           beds = beds.split(',');
+           console.log(beds);
+           for(let i = 0; i < beds.length; i++){
+               console.log("beds"+beds[i]);
+               let x = document.getElementById("beds"+beds[i]);
+                console.log(x);
+               if(x){
+                   x.style.color = "#ff0000";
+               }
+
+           }
+       }
+
+       if(sort !== 'undefined'){
+           let x = document.getElementById(sort);
+           if(x)
+               x.style.color = "#ff0000";
+           
+       }
+
+        console.log(sort);
+</script>
+
+</body>
+</html>

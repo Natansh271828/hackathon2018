@@ -1,0 +1,86 @@
+<div class="navbar">
+
+        <div>
+
+                <div class="dropdown_sub" id="filter_icon">
+                        <button class="filter-icon-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="17px" height="17px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                    <path d="M-612,320v96h96v-96H-612z M-529,403h-70v-70h70V403z"/>
+                                    <path d="M115,131V6H82v125H49v98h33v277h33V229h32v-98H115z M127,209H68v-58h59V209z"/>
+                                    <path d="M274,303V6h-34v297h-33v98h33v105h34V401h31v-98H274z M285,381h-58v-59h58V381z"/>
+                                    <path d="M431,201V6h-33v195h-34v98h34v207h33V299h31v-98H431z M443,279h-59v-58h59V279z"/>
+                                    </svg>
+                                <i class="fa fa-caret-down"></i>
+                         </button>
+                </div> 
+                <div class="dropdown_sub">
+                        <button class="filter-icon">Filters 
+                        
+                         </button>
+                </div> 
+
+            <a href="javascript:URL_add_parameter('listingType','buy');" class="buy">Buy</a>
+            <a href="javascript:URL_add_parameter('listingType','rental');"class="rent">Rent</a>
+
+            <div class="dropdown_sub">
+                    <button class="dropbtn">Bedrooms 
+                        <span class="entypo-down-open-mini" ></span>
+                    </button>
+                    <div class="dropdown-content">
+                      <a id="beds1" href="javascript:URL_add_parameter('beds','1');">1 BHK</a>
+                      <a id="beds2" href="javascript:URL_add_parameter('beds','2');">2 BHK</a>
+                      <a id="beds3" href="javascript:URL_add_parameter('beds','3');">3 BHK</a>
+                      <a id="beds4plus" href="javascript:URL_add_parameter('beds','4plus');">4+ BHK</a>
+                      <a id="bedsany" href="javascript:URL_add_parameter('beds','any');">any</a>                       
+                    </div>
+                  </div> 
+
+                  <div class="dropdown_sub">
+                      <div>
+                        <button class="dropbtn" id="sort_by_btn">Sort By 
+                            <span class="entypo-down-open-mini" ></span>
+                          <!-- <span id="current_sort"></span> -->
+                        </button>
+                        
+                     </div>    
+                        <div class="dropdown-content">
+                          <a id="relevance" href="javascript:URL_add_parameter('sort','relevance');">Relevance</a>
+                          <a id="popularity" href="javascript:URL_add_parameter('sort','popularity');">Popularity</a>
+                          <a id="price-desc" href="javascript:URL_add_parameter('sort','price-desc');">Price Desc</a>
+                          <a id="price-asc" href="javascript:URL_add_parameter('sort','price-asc');">Price Asc</a>
+                          <a id="rating" href="javascript:URL_add_parameter('sort','rating');">Seller Rating</a>
+                          <a id="date" href="javascript:URL_add_parameter('sort','date');">Date Posted</a>
+                        </div>
+                    </div>     
+
+                    <div class="dropdown_sub">
+                            <button class="dropbtn">Price 
+                                <span class="entypo-down-open-mini" ></span>
+                            </button>
+                            <div class="dropdown-content">   
+                               <div class="pricing-container">
+                                  <div id=".min-pricing"> 
+                                        <a href="javascript:URL_add_parameter('min_pricing','10000');">10k</a>
+                                        <a href="javascript:URL_add_parameter('min_pricing','100000');">1 L</a>
+                                        <a href="javascript:URL_add_parameter('min_pricing','1000000');">10 L</a>
+                                        <a href="javascript:URL_add_parameter('min_pricing','10000000');">1 Cr</a> 
+                                        <a href="javascript:URL_add_parameter('min_pricing','100000000');">10 Cr+</a>                                                                                                                       
+                                        
+                                </div>
+                                <div id=".max-pricing"> 
+                                        <a href="javascript:URL_add_parameter('max_pricing','10000');">10k</a>
+                                        <a href="javascript:URL_add_parameter('max_pricing','100000');">1 L</a>
+                                        <a href="javascript:URL_add_parameter('max_pricing','1000000');">10 L</a>
+                                        <a href="javascript:URL_add_parameter('max_pricing','10000000');">1 Cr</a> 
+                                        <a href="javascript:URL_add_parameter('max_pricing','100000000');">10 Cr</a>                              </div>
+                            </div> 
+                            </div>
+                    </div> 
+
+                    <a href="javascript:URL_add_parameter('reset','true');" class="reset">Reset</a>
+                    <a href="javascript:makeGroup();" class="reset">Make Group</a>
+
+
+        </div>
+          
+</div>
