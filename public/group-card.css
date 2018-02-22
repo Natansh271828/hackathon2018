@@ -1,0 +1,125 @@
+.group-card-container
+{
+	height:600px;
+	width: 400px;
+	position: relative;
+	border: 1px solid #959090;
+    background-color: white;
+    border-radius: 20px;
+    margin: 10px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ 
+}
+.photo
+{
+	height: 100%;
+	width: 40%;
+    border-radius: 50%;
+/*    behavior: url(PIE.htc);  remove if you don't care about IE8 
+*/  border: 5px solid white;
+    background-size: cover;
+    margin: 0px auto;
+    margin-top: 10%;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    position: relative;
+}
+.photo:hover
+{
+    /*background-color: grey;*/
+    /*box-shadow: 0 4px 8px 0 #fdf5e6;*/
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.photo-container
+{
+	height: 30%;
+}
+.description-box
+{
+	height: 10%;
+	width: 90%;
+    margin: 0px auto;
+/*    box-shadow: 2px 5px #888888;
+*/
+}
+.description
+{
+    position: relative;
+    padding-top: 5%;
+    padding-left: 5%;
+    float: left;
+}
+
+.desc
+{
+    height:100%;
+    width:100%;
+    text-align: center;
+    color: grey;
+}
+h5
+{
+    color:black;
+    text-align: center;
+}
+.whole
+{
+	padding-top: 2%;
+    color:black;
+}
+.pic
+{
+    position: absolute;
+    max-width: 100%;    
+    max-height: 100%;
+    border-radius: 50%;
+} 
+.prop
+{
+    height: 7%;
+    padding-top: 2%;
+    width: 100%
+}
+
+.info
+{
+    max-height: 20px;
+    max-width: 100%; 
+    padding-left: 5%;
+/*    font-color: white
+*/}
+.the-prop
+{
+    /*position: absolute;*/
+    /*float: left;*/
+    color: black;
+    padding-left: 2%;
+    display: inline;
+}
+
+.more
+{
+	float: right;
+    padding-top: 5%;
+    padding-right: 11%;
+    /*position: absolute;*/
+}
+.first, .second, .third
+{
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	padding-left: 2%;
+    color:black;
+}
+
+.info1
+{
+    max-height: 20px;
+    max-width: 100%; 
+    padding-left: 2%;
+
+}
