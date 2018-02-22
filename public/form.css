@@ -1,44 +1,56 @@
-
+/* 
 #login-form-wrapper{
 
-    position: absolute;
+    height: 100%;
+    position: fixed;
     display: none; 
     background-color: #384047;
     width: 100%;
     z-index: 5;
+    overflow: scroll;
+    top: 0px;
     
 }
 #signup-form{
-    position: absolute;
+    height: 100%;
+    position: fixed;
     background-color: #384047;
     display: none; 
     width: 100%;
     z-index: 5;
+    overflow: scroll;
+    top: 0px;
     
-}
-#make-group-form{
-    position: absolute;
-    background-color: #384047;
+} */
+#make-group-form, #signup-form, #login-form-wrapper{
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.801);
     display: none; 
     width: 100%;
     z-index: 5;
+    overflow: scroll;
+    top: 0px;
     
 }
 
 
 .login-form {
     font-family: 'Nunito', sans-serif;
-    margin-left: auto;
-    margin-right: auto ;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     color: #384047;
-    display: inline;
+   
   }
   
   
   
   .login-form form {
-    
-    margin: 10px auto;
+    /* margin: 10px auto; */
+    margin-top: 40px;
+    margin-bottom: 100px;
+    width: 480px;
     padding: 10px 20px;
     background: #f4f7f8;
     border-radius: 8px;

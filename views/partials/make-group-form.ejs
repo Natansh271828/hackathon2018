@@ -6,32 +6,47 @@
     
     <fieldset>
       <legend><span class="number">1</span>Your basic info</legend>
+
+      <input name="form_type" value="make_group_form" type="hidden">
+
+
       <label for="groupName">Group Name:</label>
       <input type="text" id="groupName" name="groupName">
 
       <label for="groupMembers">Number of Members:</label>
-      <input type="number" id="groupMembers" name="groupMembers">
-    </fieldset>
-    
-    <fieldset>
-      <legend><span class="number">2</span>Your profile</legend>
-      <label for="bio">Biography:</label>
-      <textarea id="bio" name="user_bio"></textarea>
-    </fieldset>
+      <input type="number" id="groupMembers" name="members">
 
-  <fieldset>
+      <label for="ageGroup">Age Group:</label>
+      <input type="text" id="ageGroup" name="ageGroup">
+
+      <!-- <legend><span class="number">2</span>Your profile</legend> -->
+      <label for="bio">Description:</label>
+      <textarea id="bio" name="description"></textarea>
+
+      <label>You are/your group is?</label>
+      <input type="radio" id="male" value="male" name="sex"><label for="male" class="light">All male</label>&nbsp
+      <input type="radio" id="female" value="female" name="sex"><label for="female" class="light">All female</label>
+      <input type="radio" id="male/female" value="both" name="sex"><label for="male/female" class="light">Group of males and females</label>&nbsp
+      
 
       <label>Do you/groupmates drink?</label>
-      <input type="radio" id="drink_yes" value="drink_yes" name="drink"><label for="drink_yes" class="light">Yes</label>&nbsp
-      <input type="radio" id="drink_no" value="drink_no" name="drink"><label for="drink_no" class="light">No</label>
+      <input type="radio" id="drink_yes" value="yes" name="drinkStatus"><label for="drink_yes" class="light">Yes</label>&nbsp
+      <input type="radio" id="drink_no" value="no" name="drinkStatus"><label for="drink_no" class="light">No</label>
 
       <label>Do you/groupmates smoke?</label>
-      <input type="radio" id="smoke_yes" value="smoke_yes" name="smoke"><label for="smoke_yes" class="light">Yes</label>&nbsp
-      <input type="radio" id="smoke_no" value="smoke_no" name="smoke"><label for="smoke_no" class="light">No</label>
+      <input type="radio" id="smoke_yes" value="yes" name="smokeStatus"><label for="smoke_yes" class="light">Yes</label>&nbsp
+      <input type="radio" id="smoke_no" value="no" name="smokeStatus"><label for="smoke_no" class="light">No</label>
 
       <label>Vegetarian?</label>
-      <input type="radio" id="veg_yes" value="veg_yes" name="vegetarian"><label for="veg_yes" class="light">Yes</label>&nbsp
-      <input type="radio" id="veg_no" value="veg_no" name="vegetarian"><label for="veg_no" class="light">No</label>
+      <input type="radio" id="veg_yes" value="yes" name="foodPreference"><label for="veg_yes" class="light">Yes</label>&nbsp
+      <input type="radio" id="veg_no" value="no" name="foodPreference"><label for="veg_no" class="light">No</label>
+
+      <label>Married?</label>
+      <input type="radio" id="married_yes" value="yes" name="marriedStatus"><label for="married_yes" class="light">Yes</label>&nbsp
+      <input type="radio" id="married_no" value="no" name="marriedStatus"><label for="married_no" class="light">No</label>
+
+      <label for="photo">Upload Photo:</label>
+      <input type="text" id="photo" name="photo" value="name.jpg">
             
   </fieldset>
 

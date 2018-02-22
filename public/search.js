@@ -206,6 +206,11 @@ function URL_add_parameter( param, value){
 
             });
 
+            // Comment this
+            if(!($('.card-view-container').is(':visible'))){
+                $('.card-view-container').css('display','flex');
+            }
+
             // response = [{photo : 'abc',
             //      members : '5',
             //      ageGroup : '78-980',
@@ -236,11 +241,18 @@ function URL_add_parameter( param, value){
 
     favourite = (e,projectId) => {
         console.log("find groups");
-        
+
+        e.preventDefault();
+        e.stopPropagation();  
+
+       // console.log(e.target.style.color.toString());
+      
+            
         //TODO:
         //send projectId and group id 
         //grop favourited this particular projectId
 
+        //uncomment this
         let requestData = {
         };
 
@@ -261,12 +273,15 @@ function URL_add_parameter( param, value){
             success: function(data,status,jqXhr){
                 console.log("sent")
                 console.log(data);
+                if(e.target.style.color != "rgb(0, 255, 0)" )
+                e.target.style.color = "#00ff00";
+                else{   
+                    e.target.style.color = "#ff0000"
+                    }
             }
 
         })
-
-        e.preventDefault();
-        e.stopPropagation();         
+       
   }
 
 
@@ -333,10 +348,13 @@ $(function(){
 
         let formObject = {};
         let isSignUpForm = false;
+        let isMakeGroupForm = false;
         let formValues = $( this ).serializeArray();
 
         if(formValues[0].value.toString() === "signup_form"){
             isSignUpForm = true;
+        }else if(formValues[0].value.toString() === "make_group_form"){
+            isMakeGroupForm = true
         }
 
         for( let i = 1; i < formValues.length; i++ ){
@@ -344,30 +362,14 @@ $(function(){
         }
         console.log(formObject);
 
-        let formString = JSON.stringify(formObject)
+        
         // console.log(isSignUpForm);
          let requestLocation = "http://10.10.3.100:8080/adduser"; 
 
-         //jQuery.param( formObject )
-        // let xhr = new XMLHttpRequest();
-        // xhr.open("POST", requestLocation, true);
-        // xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-        // xhr.onload = function (){
-        //     // if(this.status == 200)
-        //     //     {
-        //     //     }
-        //     // else{
-        //     //     //handle exception
-        //     // }
-        //     if(this.response)
-        //    console.log(this.response);
-            
-        // }    
-        // console.log("sending...");
-        //     xhr.send(formString);
-        // console.log(isSignUpForm);
 
         if(isSignUpForm){
+
+            let formString = JSON.stringify(formObject);
 
             console.log("sendin.....");
             $.ajax(
@@ -393,7 +395,31 @@ $(function(){
 
             // }
             
-        }else{
+        }else if(isMakeGroupForm){
+            formObject["email"] = "hell@gm.com";
+
+            let formString = JSON.stringify(formObject);
+            let reqLoc = "http://10.10.3.100:8080/addgroup";
+            $.ajax(
+                {
+                     url: reqLoc,
+                     type: "POST",
+                     data: formString,
+                     contentType: 'application/json; charset=utf-8',
+                     dataType: 'json',
+                     async: true,
+                     success: function(data,status,jqXhr){
+                         console.log("sent")
+                         console.log(data);
+                         console.log(status);
+                         console.log(jqXhr);
+                     }
+                 }
+             );
+
+
+        }
+        else{
 
             console.log("login Submit")
             console.log(formObject);
@@ -415,9 +441,13 @@ $(function(){
       })
 
 
-    //   $('#login-form-wrapper, #signup-form, #make-group-form').on('click',function(e){
-    //         $(this).toggle();
-    //   });
+      $('#login-form-wrapper, #signup-form, #make-group-form').on('click',function(e){
+            $(this).toggle();
+      });
+
+      $('form').on('click',function(e){
+          e.stopPropagation();
+      })
 
     
 
