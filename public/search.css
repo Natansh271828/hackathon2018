@@ -4,6 +4,17 @@
     padding: 0px;
 }
 
+.favourite{
+    margin-left: 10px;
+    color: red;
+    font-size: 40px;
+}
+
+.favourite:hover{
+    margin-left: 10px;
+    color: rgb(199, 18, 18);
+    font-size: 40px;
+}
 
 .card{
     flex-direction: row;
@@ -49,13 +60,13 @@ box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.53);
     justify-content: center;
     padding-top: 15px;
     padding-bottom: 15px;
-  
-
 }
 
 .find_mates{
     position: absolute;
-    right: -80px;
+    color: greenyellow;
+    font-size: 40px;
+    right: -45px;
 }
 .card_seller_info{
     display: flex;
@@ -246,5 +257,5 @@ box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.53);
     } 
 }
 
-/* ///////this is for login////// */
+/* ///////////// */
 

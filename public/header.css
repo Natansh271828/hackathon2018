@@ -9,7 +9,14 @@
     margin: 0px;
     padding: 0px;
 }
+a{
+    text-decoration:none;
+}
  
+
+#login_button a{
+    color: rgba(255, 4, 4, 0.781);
+}
   
   .sidenav {
     display: none;

@@ -4,7 +4,7 @@ var url = require('url');
 var webAddress = `https://www.makaan.com/petra/app/v4/listing?selector=`;
 var addressEnd = `&includeNearbyResults=false&includeSponsoredResults=false&sourceDomain=Makaan`;
 var selector = {"fields":["localityId","displayDate","listing","property","project","builder","displayName","locality","suburb","city","state","currentListingPrice","companySeller","company","user","id","name","label","listingId","propertyId","projectId","propertyTitle","unitTypeId","resaleURL","description","postedDate","verificationDate","size","measure","bedrooms","bathrooms","listingLatitude","listingLongitude","studyRoom","servantRoom","pricePerUnitArea","price","localityAvgPrice","negotiable","rk","buyUrl","rentUrl","overviewUrl","minConstructionCompletionDate","maxConstructionCompletionDate","halls","facingId","noOfOpenSides","bookingAmount","securityDeposit","ownershipTypeId","furnished","constructionStatusId","tenantTypes","bedrooms","balcony","floor","totalFloors","listingCategory","possessionDate","activeStatus","type","logo","profilePictureURL","score","assist","contactNumbers","contactNumber","isOffered","mainImageURL","mainImage","absolutePath","altText","title","imageCount","geoDistance","defaultImageId","updatedAt","qualityScore","projectStatus","throughCampaign","addedByPromoter","listingDebugInfo","videos","imageUrl","rk","penthouse","studio","paidLeadCount","listingSellerTransactionStatuses","allocation","allocationHistory","masterAllocationStatus","status","sellerCompanyFeedbackCount","companyStateReraRegistrationId"],"filters":{"and":[{"equal":{"cityId":11}},{"equal":{"listingCategory":["Primary","Resale"]}}]},"paging":{"start":0,"rows":20}};
-
+//class="cbtn cbtn-p" data-call-now="" data-type="openLeadForm" data-seller-type="EXPERT_DEAL_MAKER" 
 let totalCount;
 
 // var Template = require("./Classes/Template");
@@ -90,7 +90,7 @@ function Template(card){
 
     this.html =  `<div class="card_container"><div class="card" onclick="moveTo('${this.resaleURL}')" >
 
-    <a class="find_mates" href="#" onClick="findGroups(event,${this.propertyId})">Find Mates</a>
+    <a class="find_mates" href="#" onClick="findGroups(event,${this.propertyId})"><span class="entypo-users"></span></a>
 
     <div class="card_left_div">
         <div class="card_image" style="background-image:url('${this.image}')"></div>
@@ -135,9 +135,9 @@ function Template(card){
         </div>
         <div class="card_description"><p>${this.description}...</p></div>
         <div class="card_buttons">
-        <a class="cbtn cbtn-p" data-call-now="" data-type="openLeadForm" data-seller-type="EXPERT_DEAL_MAKER" href='javascript:favourite(${this.propertyId});'>Favourite</a>
+        <a class="favourite" onClick="favourite(event,${this.propertyId})" href='javascript:void(0);'><span class="entypo-heart" ></span></a>
         <div id="${this.sellerInfo[4]}" class="phone_number">${this.sellerInfo[4]}</div>
-        <a class="cbtn cbtn-p" data-call-now="" data-type="openLeadForm" data-seller-type="EXPERT_DEAL_MAKER" href='javascript:void(0);'> Connect Now</a>
+        <a class="cbtn cbtn-p connect_btn" data-call-now="" data-type="openLeadForm" data-seller-type="EXPERT_DEAL_MAKER" href='javascript:void(0);'> Connect Now</a>
         </div>
     </div>  
 </div> </div>`

@@ -9,6 +9,59 @@ var city = {
     "bangalore":2
 };
 
+function cardMaker(obj){
+
+    console.log( "card maker");
+    console.log(obj);
+    let photo = obj.group.photo;
+    let groupName = obj.group.groupName;
+    let numberOfMembers = obj.group.members;
+    let agegrp = obj.group.ageGroup;
+    let description = obj.group.description;
+    let drinkimg = obj.group.drinkStatus === 'yes' ? 'alcohol.png' : 'nonalcohol.png'; 
+    let smokeimg = obj.group.smokeStatus === "yes" ? 'smoking.png':'nonsmoking.jpg';
+    let foodimg =  obj.group.foodPreference === "yes" ? 'veg.jpg' : 'nonveg.jpg' ;
+    let marriedimg = obj.group.marriedStatus === 'yes' ? 'married.jpg' : 'non-married.png';
+    let groupof = obj.group.sex;
+
+
+        return(`<div class="group-card-container"> 
+                <div class="photo-container"> 
+                    <div class="photo">
+                                <img src="Hackathon/pic.png" alt="group pic" class="pic">
+                    </div>
+                </div>
+                <h5>${groupName}</h5>
+                <h5>Number of members &nbsp${numberOfMembers}</h5>
+            <div class="description-box">
+                    <input type="text" class="desc" readonly value="${description}">
+            </div>
+            <div class="whole">
+                <div class="first">
+                        <div class="prop">
+                        <img src="Hackathon/${smokeimg}" alt="smoke" class="info"><div class="the-prop">Smoking</div>
+                        </div>
+                        <div class="prop">
+                        <img src="Hackathon/${marriedimg}" alt="status" class="info"><div class="the-prop">Unmarried/Married</div>
+                        </div>
+                </div>
+                <div class="second">
+                    <div class="prop">
+                        <img src="Hackathon/${foodimg}" alt="food" class="info"><div class="the-prop">Veg/Non-veg</div>
+                    </div>
+                    <div class="prop">
+                        <img src="Hackathon/${drinkimg}" alt="drinking" class="info"><div class="the-prop">Drinking</div>
+                    </div>
+                </div>
+                <div class="third">
+                    <div class="prop">
+                        <img src="Hackathon/age.png" alt="drinking" class="info1" id="info"><div class="the-prop">${agegrp}</div>
+                    </div>
+                </div>
+                </div></div>`)
+
+}
+
 
 
 
@@ -123,18 +176,106 @@ function URL_add_parameter( param, value){
     findGroups = (e,projectId) => {
           console.log("find groups");
           e.preventDefault();
-          e.stopPropagation();
-          //TODO:
-          //find all the groups related to the projectId
-          //make cards 
-          // append cards to div
-          //toggle visibility of the card-continer div
+          e.stopPropagation(); 
           
+          
+          //TODO:   
+          //find all the groups related to the projectId
+            $.ajax({
 
+                type:'GET',
+                url: 'http://10.10.3.100:8080/getmates/23',
+                success: (data,status) => {
+                        var response;
+                        console.log(data);
+                        response = data;
+                        let html = '';
+                        for(let i = 0; i < response.length; i++ ){
+                                html +=  cardMaker(response[i]);
+                        }
 
+                        // append cards to div
+                        document.getElementById("card-view").innerHTML = html;
+                                
+
+                        if(!($('.card-view-container').is(':visible'))){
+                            $('.card-view-container').css('display','flex');
+                        }
+                       
+                }
+
+            });
+
+            // response = [{photo : 'abc',
+            //      members : '5',
+            //      ageGroup : '78-980',
+            //      groupName : 'Hello Grp',
+            //      description : 'This is an amazing grp',
+            //      drinkStatus : 'no',
+            //      smokeStatus : 'yes',
+            //      foodPreference:  'yes',
+            //      marriedStatus : 'no',
+            //      groupof:'boys'},   
+
+            //      {photo : 'abc',
+            //      members : '2',
+            //      ageGroup : '78-980',
+            //      groupName : 'Hello Grp 2',
+            //      description : 'He he he ;)))',
+            //      drinkStatus : 'no',
+            //      smokeStatus : 'yes',
+            //      foodPreference:  'yes',
+            //      marriedStatus : 'no',
+            //      groupof:'boys'}];
+
+                
+          //make cards 
+          
+                
     }
 
+    favourite = (e,projectId) => {
+        console.log("find groups");
+        
+        //TODO:
+        //send projectId and group id 
+        //grop favourited this particular projectId
+
+        let requestData = {
+        };
+
+        requestData["groupId"] = "yy";
+        requestData["projectId"] = projectId;//projectId.toString();
+        console.log(requestData);
+    
+
+        let requestLocation = 'http://10.10.3.100:8080/bookmarkproperty';
+        //let loc = requestLocation 
+        $.ajax({
+            url: requestLocation,
+            type: "POST",
+            data: JSON.stringify(requestData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: true,
+            success: function(data,status,jqXhr){
+                console.log("sent")
+                console.log(data);
+            }
+
+        })
+
+        e.preventDefault();
+        e.stopPropagation();         
+  }
+
+
+
+
+
 $(function(){
+
+    //document.getElementById('test-div').innerHTML = '<h1>hello world</h1>'
 
     $("#input").keypress(function(e){
         var code = e.keyCode || e.which;
@@ -157,7 +298,7 @@ $(function(){
         }
     });
 
-    $(".cbtn.cbtn-p").on('click',function(e){
+    $(".cbtn.cbtn-p.connect_btn").on('click',function(e){
         $(this).siblings(".phone_number").toggle();
         e.stopPropagation();
 
@@ -269,9 +410,14 @@ $(function(){
       });
 
 
-      $('#login-form-wrapper, #signup-form, #make-group-form').on('click',function(e){
-            $(this).toggle();
-      });
+      $('.card-view-container').on('click',function(e){
+          $(this).toggle();
+      })
+
+
+    //   $('#login-form-wrapper, #signup-form, #make-group-form').on('click',function(e){
+    //         $(this).toggle();
+    //   });
 
     
 

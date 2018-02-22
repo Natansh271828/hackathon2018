@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="search.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="navbar.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="form.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="card-view.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="group-card.css"/>
     
     <!-- <script src="jquery-3.3.1.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -30,6 +32,9 @@
 </script>
 </head>
 <body>
+
+    
+
     <% include partials/header %>
     <% include partials/navbar %>
     <div class="form-wrapper">
@@ -37,9 +42,196 @@
     <% include partials/signup-form %>
     <% include partials/make-group-form %>
     </div>
-    
+
+    <div id='test-div'></div>
+
+<!-- ///////////////////card//////////////// -->
+            <div class="card-view-container" >
+                 <div class="card-view" id="card-view">
+                    <!-- <div class="group-card-container"> 
+                        <div class="photo-container"> 
+                            <div class="photo">
+                                        <img src="Hackathon/pic.png" alt="group pic" class="pic">
+                            </div>
+                        </div>
+                        <h5>Group Name </h5>
+                    <div class="description-box">
+                            <input type="text" class="desc" value="Please enter desc max 255 characters" onfocus="if(this.value == 'Please enter desc max 255 characters') { this.value = '';}">
+                    </div>
+                    <div class="whole">
+                        <div class="first">
+                                <div class="prop">
+                                <img src="Hackathon/smoking.png" alt="smoke" class="info"><div class="the-prop">Smoking</div>
+                                </div>
+                                <div class="prop">
+                                <img src="Hackathon/married.jpg" alt="status" class="info"><div class="the-prop">Married</div>
+                                </div>
+                        </div>
+                        <div class="second">
+                            <div class="prop">
+                                <img src="Hackathon/veg.jpg" alt="food" class="info"><div class="the-prop">Veg</div>
+                            </div>
+                            <div class="prop">
+                                <img src="Hackathon/alcohol.png" alt="drinking" class="info"><div class="the-prop">Drinking</div>
+                            </div>
+                        </div>
+                        <div class="third">
+                            <div class="prop">
+                                <img src="Hackathon/age.png" alt="drinking" class="info1" id="info"><div class="the-prop">20-25</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+<!-- ////////////////////// -->
+<!-- 
+<div class="group-card-container"> 
+        <div class="photo-container"> 
+            <div class="photo">
+                        <img src="Hackathon/pic.png" alt="group pic" class="pic">
+            </div>
+        </div>
+        <h5>Group Name </h5>
+    <div class="description-box">
+            <input type="text" class="desc" value="Please enter desc max 255 characters" onfocus="if(this.value == 'Please enter desc max 255 characters') { this.value = '';}">
+    </div>
+    <div class="whole">
+        <div class="first">
+                <div class="prop">
+                <img src="Hackathon/smoking.png" alt="smoke" class="info"><div class="the-prop">Smoking</div>
+                </div>
+                <div class="prop">
+                <img src="Hackathon/married.jpg" alt="status" class="info"><div class="the-prop">Married</div>
+                </div>
+        </div>
+        <div class="second">
+            <div class="prop">
+                <img src="Hackathon/veg.jpg" alt="food" class="info"><div class="the-prop">Veg</div>
+            </div>
+            <div class="prop">
+                <img src="Hackathon/alcohol.png" alt="drinking" class="info"><div class="the-prop">Drinking</div>
+            </div>
+        </div>
+        <div class="third">
+            <div class="prop">
+                <img src="Hackathon/age.png" alt="drinking" class="info1" id="info"><div class="the-prop">20-25</div>
+            </div>
+        </div>
+    </div>
+</div>  
+<div class="group-card-container"> 
+        <div class="photo-container"> 
+            <div class="photo">
+                        <img src="Hackathon/pic.png" alt="group pic" class="pic">
+            </div>
+        </div>
+        <h5>Group Name </h5>
+    <div class="description-box">
+            <input type="text" class="desc" value="Please enter desc max 255 characters" onfocus="if(this.value == 'Please enter desc max 255 characters') { this.value = '';}">
+    </div>
+    <div class="whole">
+        <div class="first">
+                <div class="prop">
+                <img src="Hackathon/smoking.png" alt="smoke" class="info"><div class="the-prop">Smoking</div>
+                </div>
+                <div class="prop">
+                <img src="Hackathon/married.jpg" alt="status" class="info"><div class="the-prop">Married</div>
+                </div>
+        </div>
+        <div class="second">
+            <div class="prop">
+                <img src="Hackathon/veg.jpg" alt="food" class="info"><div class="the-prop">Veg</div>
+            </div>
+            <div class="prop">
+                <img src="Hackathon/alcohol.png" alt="drinking" class="info"><div class="the-prop">Drinking</div>
+            </div>
+        </div>
+        <div class="third">
+            <div class="prop">
+                <img src="Hackathon/age.png" alt="drinking" class="info1" id="info"><div class="the-prop">20-25</div>
+            </div>
+        </div>
+    </div>
+</div>  
+<div class="group-card-container"> 
+        <div class="photo-container"> 
+            <div class="photo">
+                        <img src="Hackathon/pic.png" alt="group pic" class="pic">
+            </div>
+        </div>
+        <h5>Group Name </h5>
+    <div class="description-box">
+            <input type="text" class="desc" value="Please enter desc max 255 characters" onfocus="if(this.value == 'Please enter desc max 255 characters') { this.value = '';}">
+    </div>
+    <div class="whole">
+        <div class="first">
+                <div class="prop">
+                <img src="Hackathon/smoking.png" alt="smoke" class="info"><div class="the-prop">Smoking</div>
+                </div>
+                <div class="prop">
+                <img src="Hackathon/married.jpg" alt="status" class="info"><div class="the-prop">Married</div>
+                </div>
+        </div>
+        <div class="second">
+            <div class="prop">
+                <img src="Hackathon/veg.jpg" alt="food" class="info"><div class="the-prop">Veg</div>
+            </div>
+            <div class="prop">
+                <img src="Hackathon/alcohol.png" alt="drinking" class="info"><div class="the-prop">Drinking</div>
+            </div>
+        </div>
+        <div class="third">
+            <div class="prop">
+                <img src="Hackathon/age.png" alt="drinking" class="info1" id="info"><div class="the-prop">20-25</div>
+            </div>
+        </div>
+    </div>
+</div>  
+<div class="group-card-container"> 
+        <div class="photo-container"> 
+            <div class="photo">
+                        <img src="Hackathon/pic.png" alt="group pic" class="pic">
+            </div>
+        </div>
+        <h5>Group Name </h5>
+    <div class="description-box">
+            <input type="text" class="desc" value="Please enter desc max 255 characters" onfocus="if(this.value == 'Please enter desc max 255 characters') { this.value = '';}">
+    </div>
+    <div class="whole">
+        <div class="first">
+                <div class="prop">
+                <img src="Hackathon/smoking.png" alt="smoke" class="info"><div class="the-prop">Smoking</div>
+                </div>
+                <div class="prop">
+                <img src="Hackathon/married.jpg" alt="status" class="info"><div class="the-prop">Married</div>
+                </div>
+        </div>
+        <div class="second">
+            <div class="prop">
+                <img src="Hackathon/veg.jpg" alt="food" class="info"><div class="the-prop">Veg</div>
+            </div>
+            <div class="prop">
+                <img src="Hackathon/alcohol.png" alt="drinking" class="info"><div class="the-prop">Drinking</div>
+            </div>
+        </div>
+        <div class="third">
+            <div class="prop">
+                <img src="Hackathon/age.png" alt="drinking" class="info1" id="info"><div class="the-prop">20-25</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+ -->
+
+<!-- //////////////////////////// -->
+            </div>     
+    </div>
     
 
+<!-- ///////////////////card//////////////// -->
 
     
 
