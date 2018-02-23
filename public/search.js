@@ -28,13 +28,13 @@ function cardMaker(obj){
         return(`<div class="group-card-container"> 
                 <div class="photo-container"> 
                     <div class="photo">
-                                <img src="Hackathon/pic.png" alt="group pic" class="pic">
+                                <img src="photos/${photo}" alt="group pic" class="pic">
                     </div>
                 </div>
-                <h5>${groupName}</h5>
-                <h5>Number of members &nbsp${numberOfMembers}</h5>
+                <h4>${groupName}</h4>
+                <h4>Number of members &nbsp${numberOfMembers}</h4>
             <div class="description-box">
-                    <input type="text" class="desc" readonly value="${description}">
+                    <p class="desc" >${description}</p>
             </div>
             <div class="whole">
                 <div class="first">
@@ -57,6 +57,9 @@ function cardMaker(obj){
                     <div class="prop">
                         <img src="Hackathon/age.png" alt="drinking" class="info1" id="info"><div class="the-prop">${agegrp}</div>
                     </div>
+                </div>
+                <div class="group-card-btn-container">
+                <a class="cbtn cbtn-p connect_btn" data-call-now="" data-type="openLeadForm" data-seller-type="EXPERT_DEAL_MAKER" href='javascript:void(0);'> Connect Now</a>
                 </div>
                 </div></div>`)
 
@@ -176,15 +179,15 @@ function URL_add_parameter( param, value){
     findGroups = (e,projectId) => {
           console.log("find groups");
           e.preventDefault();
-          e.stopPropagation(); 
+          e.stopPropagation();
           
           
-          //TODO:   
-          //find all the groups related to the projectId
+        //   TODO:   
+        //   find all the groups related to the projectId
+        //   uncomment this
             $.ajax({
-
                 type:'GET',
-                url: 'http://10.10.3.100:8080/getmates/23',
+                url: `http://192.168.43.13/:8080/getmates/${projectId}`,
                 success: (data,status) => {
                         var response;
                         console.log(data);
@@ -200,18 +203,14 @@ function URL_add_parameter( param, value){
 
                         if(!($('.card-view-container').is(':visible'))){
                             $('.card-view-container').css('display','flex');
-                        }
-                       
+                        }            
                 }
-
             });
 
-            // Comment this
-            if(!($('.card-view-container').is(':visible'))){
-                $('.card-view-container').css('display','flex');
-            }
+          
 
-            // response = [{photo : 'abc',
+            // var response;
+            // response = [{group: {photo : 'abc',
             //      members : '5',
             //      ageGroup : '78-980',
             //      groupName : 'Hello Grp',
@@ -220,9 +219,9 @@ function URL_add_parameter( param, value){
             //      smokeStatus : 'yes',
             //      foodPreference:  'yes',
             //      marriedStatus : 'no',
-            //      groupof:'boys'},   
+            //      groupof:'boys'}},   
 
-            //      {photo : 'abc',
+            //      {group: {photo : 'abc',
             //      members : '2',
             //      ageGroup : '78-980',
             //      groupName : 'Hello Grp 2',
@@ -231,7 +230,17 @@ function URL_add_parameter( param, value){
             //      smokeStatus : 'yes',
             //      foodPreference:  'yes',
             //      marriedStatus : 'no',
-            //      groupof:'boys'}];
+            //      groupof:'boys'}}];
+            //      var html='';
+            // for(let i = 0; i < response.length; i++ ){
+            //     html +=  cardMaker(response[i]);
+            //     }
+            //     document.getElementById("card-view").innerHTML = html;
+                 // Comment this
+            // if(!($('.card-view-container').is(':visible'))){
+            //     $('.card-view-container').css('display','flex');
+            // }
+
 
                 
           //make cards 
@@ -256,31 +265,33 @@ function URL_add_parameter( param, value){
         let requestData = {
         };
 
-        requestData["groupId"] = "yy";
+        requestData["gid"] = 7;
         requestData["projectId"] = projectId;//projectId.toString();
         console.log(requestData);
     
 
-        let requestLocation = 'http://10.10.3.100:8080/bookmarkproperty';
-        //let loc = requestLocation 
-        $.ajax({
-            url: requestLocation,
-            type: "POST",
-            data: JSON.stringify(requestData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: true,
-            success: function(data,status,jqXhr){
-                console.log("sent")
-                console.log(data);
-                if(e.target.style.color != "rgb(0, 255, 0)" )
-                e.target.style.color = "#00ff00";
-                else{   
-                    e.target.style.color = "#ff0000"
-                    }
-            }
+        // let requestLocation = 'http://10.10.3.100:8080/bookmarkproperty';
+        // //let loc = requestLocation 
+        // $.ajax({
+        //     url: requestLocation,
+        //     type: "POST",
+        //     data: JSON.stringify(requestData),
+        //     contentType: "application/json; charset=utf-8",
+        //     dataType: "json",
+        //     async: true,
+        //     success: function(data,status){
+        //         console.log("sent")
+        //         console.log(data);
+               
+        //     }
 
-        })
+        // })
+
+        if(e.target.style.color != "rgb(0, 255, 0)" )
+        e.target.style.color = "#00ff00";
+        else{   
+            e.target.style.color = "#ff0000"
+            }
        
   }
 
@@ -439,6 +450,10 @@ $(function(){
       $('.card-view-container').on('click',function(e){
           $(this).toggle();
       })
+
+      $('.card-view').on('click',function(e){
+        e.stopPropagation();
+    })
 
 
       $('#login-form-wrapper, #signup-form, #make-group-form').on('click',function(e){
